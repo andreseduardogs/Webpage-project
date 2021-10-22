@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Form login</title>
+    <link rel="stylesheet" href="app.component.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://scontent.fbga3-1.fna.fbcdn.net/v/t1.15752-9/247953167_1786913151499677_7058117589592929296_n.png?_nc_cat=106&ccb=1-5&_nc_sid=ae9488&_nc_eui2=AeEpH5FP-qaeKaa2q-ypNQLDueNwr0dj_d-543CvR2P93_S6lLaqVZKZ7Wlc4nQie3g&_nc_ohc=9jK-y0DDbRoAX9Ld2Jn&tn=4as1dV2IqUBAjPmx&_nc_ht=scontent.fbga3-1.fna&oh=7c51d0fca3d1edd321a0be7833511de6&oe=619555D1
+        " alt="" width="30" height="24" class="d-inline-block align-text-top" class="logo">
+        Andgit
+      </a>
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a class="navbar-item" (click)="signOut()" *ngIf="user != null" > Cerrar Sesion </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+	
+    <div class="login-box" *ngIf="user == null">
+        <img class="avatar" >
+        <h1>Andgit Login</h1>
+        <form action="">
+            <label for="username">Nombre de usuario</label>
+            <input type="text" placeholder="Enter username">
+
+            <label for="password">Contraseña</label>
+            <input type="password" placeholder="Enter password">
+
+            <input type="submit" value="Log in">
+            <br>
+            <button (click)="signIn()" *ngIf="user == null" type="button" class="login-with-google-btn">Sign In with Google</button>
+            <br>
+            <br>
+            <img class="programa" src="https://ingsistemas.cloud.ufps.edu.co/rsc/img/logo_vertical_ingsistemas_ht180.png" alt="" >
+        </form>
+    </div>
+    <div class="acount" *ngIf="user != null">
+      <div>
+        <h2>Usuario:</h2>
+        <img src="{{user.getBasicProfile().getImageUrl()}}" alt="" class="fotoperfil">
+        <div> {{user.getBasicProfile().getEmail() }} </div>
+        <div>Iniciaste sesion correctamente con Google!  </div>
+        <div> {{ user.getBasicProfile().getName() }} </div>
+      </div>
+    </div>
+</body>
+</html>
